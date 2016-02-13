@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+use feature qw#say#;
+
+sub ask{
+$x=shift;
+print$x;
+return <STDIN>;
+}
+
+open FILE, "<config.apache";
+$conf=<FILE>;
+
+
+chomp($wname=ask("whats website name:"));
+chomp($site_dir=ask("whats site dir name(do not add trailing /):"));
+chomp($log=ask("whats log dir name(do not add trailing /):"));
+
+
+$dir="$site_dir/$wname";
+mkdir $dir;
+
+
+open $host, ">>/etc/hosts" or die "Couldn't open file: try sshing me ($!)";
+say  $host "127.0.0.1	$wname"
+
+open $site_avail ,">/etc/apache2/sites-available/$wname.conf";
+print $site_avail $conf;
+
+
+`a2ensite $wname.conf;service apache2 reload`;
