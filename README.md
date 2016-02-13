@@ -3,7 +3,7 @@ create apache Virtualhost
 
 
 
-XXXXXXXXXXX following is the version information XXXXXXXXXXXX<br/>
+XXXXXXXXXXXX following is the version information XXXXXXXXXXXXX<br/>
 Linux xxxxx 3.19.0-22-generic #22-Ubuntu SMP xxx xxx xx xx:xx:xx UTC 2015 x86_64 x86_64 x86_64 GNU/Linux<br/>
 <br/>
 apache2 -v<br/>
