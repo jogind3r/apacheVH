@@ -8,8 +8,8 @@ return <STDIN>;
 }
 
 open FILE, "<config.apache";
-$conf=<FILE>;
-
+@conf=<FILE>;
+$conf="@conf";
 
 chomp($wname=ask("whats website name:"));
 chomp($site_dir=ask("whats site dir name(do not add trailing /):"));
@@ -20,11 +20,19 @@ $dir="$site_dir/$wname";
 mkdir $dir;
 
 
-open $host, ">>/etc/hosts" or die "Couldn't open file: try sshing me ($!)";
-say  $host "127.0.0.1	$wname"
+open $host, ">>/etc/hosts" or die "Couldn't open file: try sudoing me ($!)";
+say  $host "127.0.0.1	$wname";
+
+$conf=~s/<sitename>/$wname/g;
+$conf=~s/<the_log_dir>/$log/g;
+$conf=~s/<the_site_dir>/$site_dir/g;
+
+close $host;
 
 open $site_avail ,">/etc/apache2/sites-available/$wname.conf";
 print $site_avail $conf;
-
+print $conf;
 
 `a2ensite $wname.conf;service apache2 reload`;
+
+say "all is setup!"
