@@ -14,3 +14,12 @@ perl -v<br/>
 This is perl 5, version 20, subversion 2 (v5.20.2) built for x86_64-linux-gnu-thread-multi<br/>
 <br/>
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX<br/>
+
+<hr/>
+download it<br>
+cd to the folder<br/>
+and run it with sudo<br/>
+all will be set up<br/>
+the directory that will be made in the sites folder will have the root as owner.
+Change the owner and permissions as reqired using chown and chmod<br/>
+<hr/>
